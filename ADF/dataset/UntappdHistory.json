@@ -1,0 +1,153 @@
+{
+	"name": "UntappdHistory",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStore1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureDataLakeStoreFile",
+		"structure": [
+			{
+				"name": "beer_name",
+				"type": "String"
+			},
+			{
+				"name": "brewery_name",
+				"type": "String"
+			},
+			{
+				"name": "beer_type",
+				"type": "String"
+			},
+			{
+				"name": "beer_abv",
+				"type": "Decimal"
+			},
+			{
+				"name": "beer_ibu",
+				"type": "Decimal"
+			},
+			{
+				"name": "comment",
+				"type": "String"
+			},
+			{
+				"name": "venue_name",
+				"type": "String"
+			},
+			{
+				"name": "venue_city",
+				"type": "String"
+			},
+			{
+				"name": "venue_state",
+				"type": "String"
+			},
+			{
+				"name": "venue_country",
+				"type": "String"
+			},
+			{
+				"name": "venue_lat",
+				"type": "Decimal"
+			},
+			{
+				"name": "venue_lng",
+				"type": "Decimal"
+			},
+			{
+				"name": "rating_score",
+				"type": "Decimal"
+			},
+			{
+				"name": "created_at",
+				"type": "DateTime"
+			},
+			{
+				"name": "checkin_url",
+				"type": "String"
+			},
+			{
+				"name": "beer_url",
+				"type": "String"
+			},
+			{
+				"name": "brewery_url",
+				"type": "String"
+			},
+			{
+				"name": "brewery_country",
+				"type": "String"
+			},
+			{
+				"name": "brewery_city",
+				"type": "String"
+			},
+			{
+				"name": "brewery_state",
+				"type": "String"
+			},
+			{
+				"name": "flavor_profiles",
+				"type": "String"
+			},
+			{
+				"name": "purchase_venue",
+				"type": "String"
+			},
+			{
+				"name": "serving_type",
+				"type": "String"
+			},
+			{
+				"name": "checkin_id",
+				"type": "Int32"
+			},
+			{
+				"name": "bid",
+				"type": "Int32"
+			},
+			{
+				"name": "brewery_id",
+				"type": "Int32"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "JsonFormat",
+				"filePattern": "arrayOfObjects",
+				"jsonPathDefinition": {
+					"beer_name": "$.['beer_name']",
+					"brewery_name": "$.['brewery_name']",
+					"beer_type": "$.['beer_type']",
+					"beer_abv": "$.['beer_abv']",
+					"beer_ibu": "$.['beer_ibu']",
+					"comment": "$.['comment']",
+					"venue_name": "$.['venue_name']",
+					"venue_city": "$.['venue_city']",
+					"venue_state": "$.['venue_state']",
+					"venue_country": "$.['venue_country']",
+					"venue_lat": "$.['venue_lat']",
+					"venue_lng": "$.['venue_lng']",
+					"rating_score": "$.['rating_score']",
+					"created_at": "$.['created_at']",
+					"checkin_url": "$.['checkin_url']",
+					"beer_url": "$.['beer_url']",
+					"brewery_url": "$.['brewery_url']",
+					"brewery_country": "$.['brewery_country']",
+					"brewery_city": "$.['brewery_city']",
+					"brewery_state": "$.['brewery_state']",
+					"flavor_profiles": "$.['flavor_profiles']",
+					"purchase_venue": "$.['purchase_venue']",
+					"serving_type": "$.['serving_type']",
+					"checkin_id": "$.['checkin_id']",
+					"bid": "$.['bid']",
+					"brewery_id": "$.['brewery_id']"
+				}
+			},
+			"fileName": "20180912Export.json",
+			"folderPath": ""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

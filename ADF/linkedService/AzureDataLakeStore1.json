@@ -1,0 +1,13 @@
+{
+	"name": "AzureDataLakeStore1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureDataLakeStore",
+		"typeProperties": {
+			"dataLakeStoreUri": "https://joshgrantdatalake.azuredatalakestore.net/webhdfs/v1",
+			"tenant": "31ee33dd-0f01-471b-8a08-3ae8ef6e489e",
+			"subscriptionId": "d6a2dab7-b6f6-402c-8e56-cf3af06d689e",
+			"resourceGroupName": "JoshGrantSandbox"
+		}
+	}
+}
