@@ -8,15 +8,15 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
+				"name": "BeerID",
+				"type": "Int64"
+			},
+			{
 				"name": "BeerName",
 				"type": "String"
 			},
 			{
 				"name": "BeerType",
-				"type": "String"
-			},
-			{
-				"name": "BreweryName",
 				"type": "String"
 			},
 			{
@@ -26,6 +26,10 @@
 			{
 				"name": "BeerIBU",
 				"type": "Int16"
+			},
+			{
+				"name": "BeerURL",
+				"type": "String"
 			}
 		],
 		"typeProperties": {
