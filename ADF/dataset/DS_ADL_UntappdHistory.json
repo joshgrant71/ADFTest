@@ -1,5 +1,5 @@
 {
-	"name": "UntappdHistory",
+	"name": "DS_ADL_UntappdHistory",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStore1",
@@ -145,7 +145,7 @@
 					"brewery_id": "$.['brewery_id']"
 				}
 			},
-			"fileName": "20180912Export.json",
+			"fileName": "*Export.json",
 			"folderPath": ""
 		}
 	},
