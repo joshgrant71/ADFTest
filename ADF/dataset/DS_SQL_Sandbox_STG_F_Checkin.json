@@ -1,0 +1,55 @@
+{
+	"name": "DS_SQL_Sandbox_STG_F_Checkin",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "CheckinID",
+				"type": "Int64"
+			},
+			{
+				"name": "CheckinDateTime",
+				"type": "DateTime"
+			},
+			{
+				"name": "CheckinURL",
+				"type": "String"
+			},
+			{
+				"name": "Comment",
+				"type": "String"
+			},
+			{
+				"name": "RatingScore",
+				"type": "Decimal"
+			},
+			{
+				"name": "BeerID",
+				"type": "Int64"
+			},
+			{
+				"name": "BreweryID",
+				"type": "Int64"
+			},
+			{
+				"name": "VenueID",
+				"type": "Int64"
+			},
+			{
+				"name": "FlavorProfiles",
+				"type": "String"
+			},
+			{
+				"name": "ServingType",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[F_Checkin]"
+		}
+	}
+}
