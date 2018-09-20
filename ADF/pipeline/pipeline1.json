@@ -1,0 +1,74 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "UntappdHistory",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "AzureDataLakeStoreSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE Stage_Untappd"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"beer_name": "beer_name",
+							"brewery_name": "brewery_name",
+							"beer_type": "beer_type",
+							"beer_abv": "beer_abv",
+							"beer_ibu": "beer_ibu",
+							"comment": "comment",
+							"venue_name": "venue_name",
+							"venue_city": "venue_city",
+							"venue_state": "venue_state",
+							"venue_country": "venue_country",
+							"venue_lat": "venue_lat",
+							"venue_lng": "venue_lng",
+							"rating_score": "rating_score",
+							"created_at": "created_at",
+							"checkin_url": "checkin_url",
+							"beer_url": "beer_url",
+							"brewery_url": "brewery_url",
+							"brewery_country": "brewery_country",
+							"brewery_city": "brewery_city",
+							"brewery_state": "brewery_state",
+							"flavor_profiles": "flavor_profiles",
+							"purchase_venue": "purchase_venue",
+							"serving_type": "serving_type",
+							"checkin_id": "checkin_id",
+							"bid": "bid",
+							"brewery_id": "brewery_id"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ADL_UntappdHistory",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	}
+}
