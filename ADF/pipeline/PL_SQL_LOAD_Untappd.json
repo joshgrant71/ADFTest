@@ -230,6 +230,64 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "LOAD_F_Checkin",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "LOAD_D_Venue",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE F_Checkin"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"CheckinID": "CheckinID",
+							"CheckinDateTime": "CheckinDateTime",
+							"CheckinURL": "CheckinURL",
+							"Comment": "Comment",
+							"RatingScore": "RatingScore",
+							"BeerID": "BeerID",
+							"BreweryID": "BreweryID",
+							"VenueID": "VenueID",
+							"FlavorProfiles": "FlavorProfiles",
+							"ServingType": "ServingType"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_STG_F_Checkin",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_F_Checkin",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		]
 	}
