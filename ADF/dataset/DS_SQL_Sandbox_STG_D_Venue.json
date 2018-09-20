@@ -1,0 +1,39 @@
+{
+	"name": "DS_SQL_Sandbox_STG_D_Venue",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "venue_name",
+				"type": "String"
+			},
+			{
+				"name": "venue_city",
+				"type": "String"
+			},
+			{
+				"name": "venue_state",
+				"type": "String"
+			},
+			{
+				"name": "venue_country",
+				"type": "String"
+			},
+			{
+				"name": "venue_lat",
+				"type": "Decimal"
+			},
+			{
+				"name": "venue_lng",
+				"type": "Decimal"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[STG_D_Venue]"
+		}
+	}
+}
