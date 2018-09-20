@@ -148,7 +148,7 @@
 					"sink": {
 						"type": "SqlSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "TRUNCATE TABLE D_Venue;\n\nSET IDENTITY INSERT D_Venue ON;\nINSERT INTO D_Venue\n(-1, 'Unknown', 'Unknown', 'Unknown', 'Unknown', null, null);\nSET IDENTITY INSERT D_Venue OFF;"
+						"preCopyScript": "TRUNCATE TABLE D_Venue;\n\nSET IDENTITY_INSERT D_Venue ON;\nINSERT INTO D_Venue\n(-1, 'Unknown', 'Unknown', 'Unknown', 'Unknown', null, null);\nSET IDENTITY_INSERT D_Venue OFF;"
 					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0,
