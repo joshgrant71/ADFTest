@@ -57,7 +57,7 @@
 			},
 			{
 				"name": "rating_score",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "created_at",
