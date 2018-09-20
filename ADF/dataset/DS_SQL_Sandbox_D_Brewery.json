@@ -1,0 +1,39 @@
+{
+	"name": "DS_SQL_Sandbox_D_Brewery",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "BreweryID",
+				"type": "Int64"
+			},
+			{
+				"name": "BreweryName",
+				"type": "String"
+			},
+			{
+				"name": "BreweryURL",
+				"type": "String"
+			},
+			{
+				"name": "BreweryCountry",
+				"type": "String"
+			},
+			{
+				"name": "BreweryCity",
+				"type": "String"
+			},
+			{
+				"name": "BreweryState",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[D_Brewery]"
+		}
+	}
+}
