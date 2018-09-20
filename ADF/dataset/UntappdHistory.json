@@ -61,7 +61,7 @@
 			},
 			{
 				"name": "created_at",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "checkin_url",
