@@ -21,11 +21,11 @@
 			},
 			{
 				"name": "beer_abv",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "beer_ibu",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "comment",
@@ -49,15 +49,15 @@
 			},
 			{
 				"name": "venue_lat",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "venue_lng",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "rating_score",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "created_at",
