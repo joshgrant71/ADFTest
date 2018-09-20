@@ -143,8 +143,7 @@
 				},
 				"typeProperties": {
 					"source": {
-						"type": "SqlSource",
-						"sqlReaderQuery": "SELECT DISTINCT venue_name, venue_city, venue_state, venue_country, venue_lat, venue_lng\nFROM Stage_Untappd"
+						"type": "SqlSource"
 					},
 					"sink": {
 						"type": "SqlSink",
@@ -167,7 +166,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"referenceName": "DS_SQL_Sandbox_D_Venue",
 						"type": "DatasetReference"
 					}
 				],
@@ -198,8 +197,7 @@
 				},
 				"typeProperties": {
 					"source": {
-						"type": "SqlSource",
-						"sqlReaderQuery": "SELECT DISTINCT brewery_id, brewery_name, brewery_url, brewery_country, brewery_city, brewery_state\nFROM Stage_Untappd"
+						"type": "SqlSource"
 					},
 					"sink": {
 						"type": "SqlSink",
@@ -222,7 +220,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"referenceName": "DS_SQL_Sandbox_STG_D_Brewery",
 						"type": "DatasetReference"
 					}
 				],
