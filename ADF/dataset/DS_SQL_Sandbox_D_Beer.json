@@ -1,5 +1,5 @@
 {
-	"name": "D_Beer",
+	"name": "DS_SQL_Sandbox_D_Beer",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
