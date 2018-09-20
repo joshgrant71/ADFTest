@@ -25,7 +25,7 @@
 			},
 			{
 				"name": "BeerIBU",
-				"type": "Byte"
+				"type": "Int16"
 			}
 		],
 		"typeProperties": {
