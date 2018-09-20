@@ -1,5 +1,5 @@
 {
-	"name": "PL_STAGE_SQL_Sandbox_Stage_Untappd",
+	"name": "PL_SQL_LOAD_Untappd",
 	"properties": {
 		"activities": [
 			{
@@ -65,6 +65,114 @@
 				"outputs": [
 					{
 						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_D_Beer",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "COPY_UntappdHistory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE D_Beer"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"beer_name": "BeerName",
+							"beer_type": "BeerType",
+							"brewery_name": "BreweryName",
+							"beer_abv": "BeerABV",
+							"beer_ibu": "BeerIBU"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_STG_D_Beer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Beer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_D_Venue",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "COPY_UntappdHistory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT DISTINCT venue_name, venue_city, venue_state, venue_country, venue_lat, venue_lng\nFROM Stage_Untappd"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE D_Venue"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"venue_name": "VenueName",
+							"venue_city": "VenueCity",
+							"venue_state": "VenueState",
+							"venue_country": "VenueCountry",
+							"venue_lat": "VenueLat",
+							"venue_lng": "VenueLong"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Venue",
 						"type": "DatasetReference"
 					}
 				]

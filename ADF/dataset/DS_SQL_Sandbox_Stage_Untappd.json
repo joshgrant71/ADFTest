@@ -8,30 +8,6 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "beer_name",
-				"type": "String"
-			},
-			{
-				"name": "brewery_name",
-				"type": "String"
-			},
-			{
-				"name": "beer_type",
-				"type": "String"
-			},
-			{
-				"name": "beer_abv",
-				"type": "Decimal"
-			},
-			{
-				"name": "beer_ibu",
-				"type": "Int16"
-			},
-			{
-				"name": "comment",
-				"type": "String"
-			},
-			{
 				"name": "venue_name",
 				"type": "String"
 			},
@@ -54,62 +30,6 @@
 			{
 				"name": "venue_lng",
 				"type": "Decimal"
-			},
-			{
-				"name": "rating_score",
-				"type": "String"
-			},
-			{
-				"name": "created_at",
-				"type": "String"
-			},
-			{
-				"name": "checkin_url",
-				"type": "String"
-			},
-			{
-				"name": "beer_url",
-				"type": "String"
-			},
-			{
-				"name": "brewery_url",
-				"type": "String"
-			},
-			{
-				"name": "brewery_country",
-				"type": "String"
-			},
-			{
-				"name": "brewery_city",
-				"type": "String"
-			},
-			{
-				"name": "brewery_state",
-				"type": "String"
-			},
-			{
-				"name": "flavor_profiles",
-				"type": "String"
-			},
-			{
-				"name": "purchase_venue",
-				"type": "String"
-			},
-			{
-				"name": "serving_type",
-				"type": "String"
-			},
-			{
-				"name": "checkin_id",
-				"type": "Int64"
-			},
-			{
-				"name": "bid",
-				"type": "Int64"
-			},
-			{
-				"name": "brewery_id",
-				"type": "Int64"
 			}
 		],
 		"typeProperties": {
