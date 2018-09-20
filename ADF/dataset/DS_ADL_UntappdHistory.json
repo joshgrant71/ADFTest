@@ -1,5 +1,5 @@
 {
-	"name": "UntappdHistory",
+	"name": "DS_ADL_UntappdHistory",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStore1",
@@ -21,11 +21,11 @@
 			},
 			{
 				"name": "beer_abv",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "beer_ibu",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "comment",
@@ -49,19 +49,19 @@
 			},
 			{
 				"name": "venue_lat",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "venue_lng",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "rating_score",
-				"type": "Decimal"
+				"type": "String"
 			},
 			{
 				"name": "created_at",
-				"type": "DateTime"
+				"type": "String"
 			},
 			{
 				"name": "checkin_url",
@@ -145,7 +145,7 @@
 					"brewery_id": "$.['brewery_id']"
 				}
 			},
-			"fileName": "20180912Export.json",
+			"fileName": "*Export.json",
 			"folderPath": ""
 		}
 	},
