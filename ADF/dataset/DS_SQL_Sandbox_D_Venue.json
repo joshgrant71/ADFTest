@@ -1,0 +1,43 @@
+{
+	"name": "DS_SQL_Sandbox_D_Venue",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "VenueSID",
+				"type": "Int32"
+			},
+			{
+				"name": "VenueName",
+				"type": "String"
+			},
+			{
+				"name": "VenueCity",
+				"type": "String"
+			},
+			{
+				"name": "VenueState",
+				"type": "String"
+			},
+			{
+				"name": "VenueCountry",
+				"type": "String"
+			},
+			{
+				"name": "VenueLat",
+				"type": "Decimal"
+			},
+			{
+				"name": "VenueLong",
+				"type": "Decimal"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[D_Venue]"
+		}
+	}
+}
