@@ -8,10 +8,6 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "VenueSID",
-				"type": "Int32"
-			},
-			{
 				"name": "VenueName",
 				"type": "String"
 			},
