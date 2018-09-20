@@ -8,28 +8,28 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "venue_name",
+				"name": "brewery_id",
+				"type": "Int64"
+			},
+			{
+				"name": "brewery_name",
 				"type": "String"
 			},
 			{
-				"name": "venue_city",
+				"name": "brewery_url",
 				"type": "String"
 			},
 			{
-				"name": "venue_state",
+				"name": "brewery_country",
 				"type": "String"
 			},
 			{
-				"name": "venue_country",
+				"name": "brewery_city",
 				"type": "String"
 			},
 			{
-				"name": "venue_lat",
-				"type": "Decimal"
-			},
-			{
-				"name": "venue_lng",
-				"type": "Decimal"
+				"name": "brewery_state",
+				"type": "String"
 			}
 		],
 		"typeProperties": {

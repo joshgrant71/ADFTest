@@ -101,11 +101,12 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
+							"bid": "BeerID",
 							"beer_name": "BeerName",
 							"beer_type": "BeerType",
-							"brewery_name": "BreweryName",
 							"beer_abv": "BeerABV",
-							"beer_ibu": "BeerIBU"
+							"beer_ibu": "BeerIBU",
+							"beer_url": "BeerURL"
 						}
 					}
 				},
@@ -173,6 +174,61 @@
 				"outputs": [
 					{
 						"referenceName": "DS_SQL_Sandbox_D_Venue",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_D_Brewery",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "COPY_UntappdHistory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource",
+						"sqlReaderQuery": "SELECT DISTINCT brewery_id, brewery_name, brewery_url, brewery_country, brewery_city, brewery_state\nFROM Stage_Untappd"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE D_Brewery"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"brewery_id": "BreweryID",
+							"brewery_name": "BreweryName",
+							"brewery_url": "BreweryURL",
+							"brewery_country": "BreweryCountry",
+							"brewery_city": "BreweryCity",
+							"brewery_state": "BreweryState"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Brewery",
 						"type": "DatasetReference"
 					}
 				]
