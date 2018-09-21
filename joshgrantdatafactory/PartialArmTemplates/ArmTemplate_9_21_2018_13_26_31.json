@@ -6,38 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "joshgrantdatafactory"
-		},
-		"AzureSqlDatabase1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
-		},
-		"DS_ADL_UntappdHistory_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "*Export.json"
-		},
-		"DS_ADL_UntappdHistory_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": ""
-		},
-		"AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri": {
-			"type": "string",
-			"defaultValue": "https://joshgrantdatalake.azuredatalakestore.net/webhdfs/v1"
-		},
-		"AzureDataLakeStore1_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "31ee33dd-0f01-471b-8a08-3ae8ef6e489e"
-		},
-		"AzureDataLakeStore1_properties_typeProperties_subscriptionId": {
-			"type": "string",
-			"defaultValue": "d6a2dab7-b6f6-402c-8e56-cf3af06d689e"
-		},
-		"AzureDataLakeStore1_properties_typeProperties_resourceGroupName": {
-			"type": "string",
-			"defaultValue": "JoshGrantSandbox"
-		},
-		"HttpServer1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://untappd-user-exports.s3.amazonaws.com/609001/a88541e4291503b06fb7e3349c160756.json"
 		}
 	},
 	"variables": {
@@ -53,7 +21,6 @@
 					{
 						"name": "COPY_UntappdHistory",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -61,7 +28,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "AzureDataLakeStoreSource",
@@ -109,15 +75,13 @@
 						"inputs": [
 							{
 								"referenceName": "DS_ADL_UntappdHistory",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -139,7 +103,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "SqlSource"
@@ -166,15 +129,13 @@
 						"inputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_STG_D_Beer",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_D_Beer",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -196,7 +157,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "SqlSource"
@@ -223,15 +183,13 @@
 						"inputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_D_Venue",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_D_Venue",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -253,7 +211,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "SqlSource"
@@ -280,15 +237,13 @@
 						"inputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_STG_D_Brewery",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_D_Brewery",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -310,7 +265,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "SqlSource"
@@ -341,20 +295,17 @@
 						"inputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_STG_F_Checkin",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DS_SQL_Sandbox_F_Checkin",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ADL_UntappdHistory')]",
@@ -380,7 +331,6 @@
 				"folder": {
 					"name": "Source"
 				},
-				"annotations": [],
 				"type": "AzureDataLakeStoreFile",
 				"structure": [
 					{
@@ -521,13 +471,10 @@
 							"brewery_id": "$.['brewery_id']"
 						}
 					},
-					"fileName": "[parameters('DS_ADL_UntappdHistory_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('DS_ADL_UntappdHistory_properties_typeProperties_folderPath')]"
+					"fileName": "*Export.json",
+					"folderPath": ""
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStore1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_D_Beer')]",
@@ -541,7 +488,6 @@
 				"folder": {
 					"name": "Target"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -572,10 +518,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[D_Beer]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_D_Brewery')]",
@@ -589,7 +532,6 @@
 				"folder": {
 					"name": "Target"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -620,10 +562,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[D_Brewery]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_D_Venue')]",
@@ -637,7 +576,6 @@
 				"folder": {
 					"name": "Target"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -668,10 +606,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[D_Venue]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_F_Checkin')]",
@@ -685,7 +620,6 @@
 				"folder": {
 					"name": "Target"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -732,10 +666,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[F_Checkin]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_STG_D_Beer')]",
@@ -749,7 +680,6 @@
 				"folder": {
 					"name": "Stage Views"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -780,10 +710,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[STG_D_Beer]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_STG_D_Brewery')]",
@@ -797,7 +724,6 @@
 				"folder": {
 					"name": "Stage Views"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -828,10 +754,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[STG_D_Brewery]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_STG_D_Venue')]",
@@ -845,7 +768,6 @@
 				"folder": {
 					"name": "Stage Views"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -876,10 +798,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[STG_D_Venue]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_STG_F_Checkin')]",
@@ -893,7 +812,6 @@
 				"folder": {
 					"name": "Stage Views"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -940,10 +858,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[F_Checkin]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_SQL_Sandbox_Stage_Untappd')]",
@@ -957,7 +872,6 @@
 				"folder": {
 					"name": "Stage Tables"
 				},
-				"annotations": [],
 				"type": "AzureSqlTable",
 				"structure": [
 					{
@@ -1068,54 +982,7 @@
 				"typeProperties": {
 					"tableName": "[concat('[', 'dbo].[Stage_Untappd]')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStore1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureDataLakeStore",
-				"typeProperties": {
-					"dataLakeStoreUri": "[parameters('AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri')]",
-					"tenant": "[parameters('AzureDataLakeStore1_properties_typeProperties_tenant')]",
-					"subscriptionId": "[parameters('AzureDataLakeStore1_properties_typeProperties_subscriptionId')]",
-					"resourceGroupName": "[parameters('AzureDataLakeStore1_properties_typeProperties_resourceGroupName')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/HttpServer1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('HttpServer1_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
+			}
 		}
 	]
 }

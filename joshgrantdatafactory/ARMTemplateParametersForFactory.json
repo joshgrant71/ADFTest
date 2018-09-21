@@ -1,1 +1,33 @@
-{}
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "joshgrantdatafactory"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"DS_ADL_UntappdHistory_properties_typeProperties_fileName": {
+			"value": "*Export.json"
+		},
+		"DS_ADL_UntappdHistory_properties_typeProperties_folderPath": {
+			"value": ""
+		},
+		"AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri": {
+			"value": "https://joshgrantdatalake.azuredatalakestore.net/webhdfs/v1"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_tenant": {
+			"value": "31ee33dd-0f01-471b-8a08-3ae8ef6e489e"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_subscriptionId": {
+			"value": "d6a2dab7-b6f6-402c-8e56-cf3af06d689e"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_resourceGroupName": {
+			"value": "JoshGrantSandbox"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://untappd-user-exports.s3.amazonaws.com/609001/a88541e4291503b06fb7e3349c160756.json"
+		}
+	}
+}
