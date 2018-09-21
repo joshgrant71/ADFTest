@@ -1,0 +1,294 @@
+{
+	"name": "PL_SQL_LOAD_Untappd",
+	"properties": {
+		"activities": [
+			{
+				"name": "COPY_UntappdHistory",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "AzureDataLakeStoreSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE Stage_Untappd"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"beer_name": "beer_name",
+							"brewery_name": "brewery_name",
+							"beer_type": "beer_type",
+							"beer_abv": "beer_abv",
+							"beer_ibu": "beer_ibu",
+							"comment": "comment",
+							"venue_name": "venue_name",
+							"venue_city": "venue_city",
+							"venue_state": "venue_state",
+							"venue_country": "venue_country",
+							"venue_lat": "venue_lat",
+							"venue_lng": "venue_lng",
+							"rating_score": "rating_score",
+							"created_at": "created_at",
+							"checkin_url": "checkin_url",
+							"beer_url": "beer_url",
+							"brewery_url": "brewery_url",
+							"brewery_country": "brewery_country",
+							"brewery_city": "brewery_city",
+							"brewery_state": "brewery_state",
+							"flavor_profiles": "flavor_profiles",
+							"purchase_venue": "purchase_venue",
+							"serving_type": "serving_type",
+							"checkin_id": "checkin_id",
+							"bid": "bid",
+							"brewery_id": "brewery_id"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ADL_UntappdHistory",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_Stage_Untappd",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_D_Beer",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "COPY_UntappdHistory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE D_Beer"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"bid": "BeerID",
+							"beer_name": "BeerName",
+							"beer_type": "BeerType",
+							"beer_abv": "BeerABV",
+							"beer_ibu": "BeerIBU",
+							"beer_url": "BeerURL"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_STG_D_Beer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Beer",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_D_Venue",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "COPY_UntappdHistory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE D_Venue"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"VenueName": "VenueName",
+							"VenueCity": "VenueCity",
+							"VenueState": "VenueState",
+							"VenueCountry": "VenueCountry",
+							"VenueLat": "VenueLat",
+							"VenueLong": "VenueLong"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Venue",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Venue",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_D_Brewery",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "COPY_UntappdHistory",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE D_Brewery"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"brewery_id": "BreweryID",
+							"brewery_name": "BreweryName",
+							"brewery_url": "BreweryURL",
+							"brewery_country": "BreweryCountry",
+							"brewery_city": "BreweryCity",
+							"brewery_state": "BreweryState"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_STG_D_Brewery",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_D_Brewery",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "LOAD_F_Checkin",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "LOAD_D_Venue",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "SqlSource"
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "TRUNCATE TABLE F_Checkin"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"CheckinID": "CheckinID",
+							"CheckinDateTime": "CheckinDateTime",
+							"CheckinURL": "CheckinURL",
+							"Comment": "Comment",
+							"RatingScore": "RatingScore",
+							"BeerID": "BeerID",
+							"BreweryID": "BreweryID",
+							"VenueID": "VenueID",
+							"FlavorProfiles": "FlavorProfiles",
+							"ServingType": "ServingType"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_STG_F_Checkin",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_SQL_Sandbox_F_Checkin",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	}
+}

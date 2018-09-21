@@ -1,5 +1,5 @@
 {
-	"name": "DS_SQL_Sandbox_D_Beer",
+	"name": "DS_SQL_Sandbox_D_Brewery",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
@@ -11,32 +11,32 @@
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "BeerID",
+				"name": "BreweryID",
 				"type": "Int64"
 			},
 			{
-				"name": "BeerName",
+				"name": "BreweryName",
 				"type": "String"
 			},
 			{
-				"name": "BeerType",
+				"name": "BreweryURL",
 				"type": "String"
 			},
 			{
-				"name": "BeerABV",
-				"type": "Decimal"
+				"name": "BreweryCountry",
+				"type": "String"
 			},
 			{
-				"name": "BeerIBU",
-				"type": "Int16"
+				"name": "BreweryCity",
+				"type": "String"
 			},
 			{
-				"name": "BeerURL",
+				"name": "BreweryState",
 				"type": "String"
 			}
 		],
 		"typeProperties": {
-			"tableName": "[dbo].[D_Beer]"
+			"tableName": "[dbo].[D_Brewery]"
 		}
 	}
 }

@@ -5,6 +5,9 @@
 			"referenceName": "AzureDataLakeStore1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Source"
+		},
 		"type": "AzureDataLakeStoreFile",
 		"structure": [
 			{

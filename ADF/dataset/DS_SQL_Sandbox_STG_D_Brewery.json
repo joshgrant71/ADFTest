@@ -1,42 +1,42 @@
 {
-	"name": "DS_SQL_Sandbox_D_Beer",
+	"name": "DS_SQL_Sandbox_STG_D_Brewery",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Target"
+			"name": "Stage Views"
 		},
 		"type": "AzureSqlTable",
 		"structure": [
 			{
-				"name": "BeerID",
+				"name": "brewery_id",
 				"type": "Int64"
 			},
 			{
-				"name": "BeerName",
+				"name": "brewery_name",
 				"type": "String"
 			},
 			{
-				"name": "BeerType",
+				"name": "brewery_url",
 				"type": "String"
 			},
 			{
-				"name": "BeerABV",
-				"type": "Decimal"
+				"name": "brewery_country",
+				"type": "String"
 			},
 			{
-				"name": "BeerIBU",
-				"type": "Int16"
+				"name": "brewery_city",
+				"type": "String"
 			},
 			{
-				"name": "BeerURL",
+				"name": "brewery_state",
 				"type": "String"
 			}
 		],
 		"typeProperties": {
-			"tableName": "[dbo].[D_Beer]"
+			"tableName": "[dbo].[STG_D_Brewery]"
 		}
 	}
 }
