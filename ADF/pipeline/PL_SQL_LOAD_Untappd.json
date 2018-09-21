@@ -155,12 +155,12 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"columnMappings": {
-							"venue_name": "VenueName",
-							"venue_city": "VenueCity",
-							"venue_state": "VenueState",
-							"venue_country": "VenueCountry",
-							"venue_lat": "VenueLat",
-							"venue_lng": "VenueLong"
+							"VenueName": "VenueName",
+							"VenueCity": "VenueCity",
+							"VenueState": "VenueState",
+							"VenueCountry": "VenueCountry",
+							"VenueLat": "VenueLat",
+							"VenueLong": "VenueLong"
 						}
 					}
 				},
